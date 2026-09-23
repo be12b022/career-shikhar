@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>करियर शिखर | विद्यालयी शिक्षा विभाग, टिहरी गढ़वाल</title>
+<meta name="description" content="कक्षा 9-12 के विद्यार्थियों के लिए करियर खोज उपकरण — विद्यालयी शिक्षा विभाग, टिहरी गढ़वाल, उत्तराखण्ड">
+<meta name="theme-color" content="#1E4D3A">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
+<style>
+:root{
+  --pine:#1E4D3A; --pine-2:#2F6B52; --sky:#EEF4F1; --paper:#FFFFFF; --ink:#1C2B33; --muted:#5A6B72;
+  --buransh:#C4314B; --buransh-soft:#FBE7EA; --sun:#E9A23B; --sun-soft:#FDF2DD; --glacier:#D6E6EC; --line:#CBDAD3;
+  --font:"Noto Sans Devanagari","Nirmala UI","Mangal","Kohinoor Devanagari","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:var(--font);background:var(--sky);color:var(--ink);font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+:root{padding-top:env(safe-area-inset-top,0px)}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+/* Header */
+.dept{background:var(--pine);color:#fff;padding:10px 0 12px}
+.dept .wrap{display:flex;align-items:center;gap:12px}
+.emblem{flex:none;width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:24px}
+.dept small{display:block;opacity:.85;font-size:12.5px;line-height:1.35}
+.dept strong{display:block;font-size:15.5px;line-height:1.3}
+
+/* Altitude strip */
+.meter{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.meter .wrap{display:flex;align-items:center;gap:12px;padding-top:8px;padding-bottom:8px}
+.alt{font-weight:700;font-size:18px;white-space:nowrap;color:var(--pine)}
+.alt span{font-size:12px;font-weight:500;color:var(--muted)}
+.bar{flex:1;height:10px;background:var(--glacier);border-radius:6px;overflow:hidden;min-width:60px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pine-2),var(--sun));transition:width .6s ease}
+.camp{font-size:13px;color:var(--muted);white-space:nowrap}
+
+/* Tabs */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--paper);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav.tabs .wrap{display:grid;grid-template-columns:repeat(5,1fr);padding:0 4px}
+nav.tabs button{background:none;border:0;padding:8px 2px 9px;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:12px;color:var(--muted);position:relative}
+nav.tabs button b{font-size:21px;line-height:1.1;font-weight:400}
+nav.tabs button[aria-selected="true"]{color:var(--pine);font-weight:700}
+nav.tabs button[aria-selected="true"]::before{content:"";position:absolute;top:0;left:22%;right:22%;height:3px;border-radius:0 0 3px 3px;background:var(--buransh)}
+.badge-count{position:absolute;top:4px;right:calc(50% - 22px);background:var(--buransh);color:#fff;font-size:10.5px;border-radius:9px;padding:0 5px;line-height:16px;font-weight:700}
+main{padding-bottom:96px}
+section.view{display:none;padding:18px 0 8px}
+section.view.on{display:block}
+h1,h2,h3{line-height:1.3;margin:0}
+h2{font-size:22px;color:var(--pine)}
+h3{font-size:17px}
+p{margin:.4em 0}
+.lead{color:var(--muted)}
+
+/* Hero mountain */
+.hero{background:linear-gradient(#DCEBF0,#F4F8F6 70%);border:1px solid var(--line);border-radius:18px;overflow:hidden;position:relative}
+.hero svg{display:block;width:100%;height:auto}
+.hero .txt{padding:4px 18px 18px}
+.hero h1{font-size:30px;color:var(--pine);letter-spacing:-.01em}
+.hero h1 em{font-style:normal;display:block;font-size:15px;font-weight:500;color:var(--muted);letter-spacing:0;margin-top:2px}
+#climber{transition:transform 1s cubic-bezier(.3,.8,.3,1)}
+@keyframes wave{0%,100%{transform:skewX(0)}50%{transform:skewX(-12deg)}}
+.flag{transform-origin:left center;animation:wave 2.4s ease-in-out infinite}
+
+.start{display:grid;gap:12px;margin-top:16px}
+.start button{display:flex;align-items:center;gap:14px;text-align:left;background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px}
+.start button:hover{border-color:var(--pine-2)}
+.start .ic{font-size:30px;flex:none}
+.start b{display:block;font-size:17px}
+.start span{font-size:14px;color:var(--muted)}
+.start .xp{margin-left:auto;flex:none;background:var(--sun-soft);color:#8A5A0F;font-size:12.5px;font-weight:700;padding:3px 8px;border-radius:8px}
+.how{margin-top:18px;background:var(--paper);border-radius:14px;padding:14px 16px;border:1px dashed var(--line);font-size:14.5px}
+.how ul{margin:.3em 0 0;padding-left:1.2em}
+
+/* Filters */
+.filters{display:grid;gap:10px;margin:14px 0 10px;background:var(--paper);padding:14px;border-radius:14px;border:1px solid var(--line)}
+.filters label{font-size:13.5px;font-weight:600;color:var(--muted);display:block;margin-bottom:3px}
+.filters select,.filters input{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font-size:15.5px}
+.filters select:focus,.filters input:focus{border-color:var(--pine-2);outline:none}
+@media(min-width:620px){.filters{grid-template-columns:1fr 1fr}.filters .full{grid-column:1/-1}}
+.row-between{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.count{font-weight:700;color:var(--pine)}
+.linkbtn{background:none;border:0;color:var(--buransh);font-weight:600;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
+.note{font-size:13px;color:var(--muted)}
+
+/* Career card */
+.list{display:grid;gap:10px;margin-top:10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.card>button.head{width:100%;background:none;border:0;display:flex;align-items:center;gap:12px;padding:13px 14px;text-align:left}
+.card .fic{font-size:24px;flex:none;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--sky)}
+.card .t{flex:1;min-width:0}
+.card .t b{display:block;font-size:16.5px;line-height:1.3}
+.card .t small{color:var(--muted);font-size:13px}
+.card .seen{font-size:12px;color:var(--pine-2);font-weight:700;flex:none}
+.card .chev{flex:none;transition:transform .2s;color:var(--muted)}
+.card.open .chev{transform:rotate(180deg)}
+.card .body{display:none;padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.card.open .body{display:block}
+.body h4{margin:14px 0 6px;font-size:14px;color:var(--pine)}
+.trail{list-style:none;margin:0;padding:0 0 0 4px}
+.trail li{position:relative;padding:0 0 12px 24px;font-size:15px}
+.trail li::before{content:"";position:absolute;left:3px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2.5px solid var(--pine-2)}
+.trail li::after{content:"";position:absolute;left:8px;top:19px;bottom:0;border-left:2px dotted var(--pine-2)}
+.trail li:last-child{padding-bottom:0}
+.trail li:last-child::before{background:var(--buransh);border-color:var(--buransh)}
+.trail li:last-child::after{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--sun-soft);color:#6E480C;border-radius:8px;padding:4px 10px;font-size:14px}
+.chip.none{background:#E3F1EA;color:var(--pine)}
+.save{margin-top:14px;width:100%;padding:11px;border-radius:10px;border:1.5px solid var(--buransh);background:#fff;color:var(--buransh);font-weight:700}
+.save.on{background:var(--buransh);color:#fff}
+.more{display:block;margin:14px auto 0;padding:11px 22px;border-radius:10px;border:1.5px solid var(--pine-2);background:#fff;color:var(--pine);font-weight:700}
+.empty{background:var(--paper);border-radius:14px;padding:22px;text-align:center;border:1px dashed var(--line)}
+
+/* Quiz */
+.qbox{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:14px}
+.qprog{display:flex;gap:5px;margin-bottom:14px}
+.qprog i{flex:1;height:6px;border-radius:3px;background:var(--glacier)}
+.qprog i.done{background:var(--pine-2)}
+.qprog i.now{background:var(--sun)}
+.qbox h3{font-size:19px;margin-bottom:12px}
+.opts{display:grid;gap:9px}
+.opts button{text-align:left;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:#fff;display:flex;gap:12px;align-items:center;font-size:15.5px}
+.opts button b{font-size:24px;font-weight:400}
+.opts button:hover{border-color:var(--pine-2);background:var(--sky)}
+.result{display:grid;gap:10px;margin-top:10px}
+.res{border:1.5px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+.res.top{border-color:var(--sun);background:var(--sun-soft)}
+.res .rh{display:flex;align-items:center;gap:10px}
+.res .rh b{font-size:17px;flex:1}
+.res .pct{font-weight:700;color:var(--pine)}
+.res .mbar{height:8px;background:var(--glacier);border-radius:4px;margin:8px 0;overflow:hidden}
+.res .mbar i{display:block;height:100%;background:var(--pine-2)}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;border:0;background:var(--pine);color:#fff;font-weight:700}
+.btn.ghost{background:#fff;color:var(--pine);border:1.5px solid var(--pine-2)}
+.btn.red{background:var(--buransh)}
+
+/* Wheel */
+.wheel-area{display:flex;flex-direction:column;align-items:center;margin-top:10px}
+.wheel-box{position:relative;width:min(88vw,330px);aspect-ratio:1}
+.wheel-box svg{width:100%;height:100%;display:block}
+#wheel{position:absolute;inset:0;transition:transform 4s cubic-bezier(.15,.85,.2,1);transform-origin:50% 50%}
+.hub{position:absolute;inset:0}
+.pointer{position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:28px solid var(--buransh);filter:drop-shadow(0 2px 1px rgba(0,0,0,.2));z-index:2}
+.spin-btn{margin-top:16px;padding:14px 34px;font-size:18px;border-radius:40px}
+#spinOut{width:100%;margin-top:16px}
+
+/* Passport */
+.pass{background:var(--paper);border:2px solid var(--pine);border-radius:16px;overflow:hidden;margin-top:14px}
+.pass .ph{background:var(--pine);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.pass .ph b{display:block;font-size:18px}
+.pass .ph small{opacity:.85}
+.pass .pb{padding:16px}
+.pass input{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;font-size:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.stats div{background:var(--sky);border-radius:10px;padding:10px 6px;text-align:center}
+.stats b{display:block;font-size:22px;color:var(--pine);line-height:1.2}
+.stats span{font-size:12.5px;color:var(--muted)}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;margin-top:8px}
+.bdg{border-radius:12px;padding:10px 6px;text-align:center;background:var(--sky);border:1px solid var(--line);font-size:12.5px;line-height:1.3}
+.bdg b{display:block;font-size:28px;font-weight:400;line-height:1.2;filter:grayscale(1);opacity:.35}
+.bdg.got{background:var(--sun-soft);border-color:var(--sun)}
+.bdg.got b{filter:none;opacity:1}
+.bdg span{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+.saved-item{border-bottom:1px dashed var(--line);padding:10px 0}
+.saved-item:last-child{border-bottom:0}
+.saved-item b{font-size:16px}
+.saved-item p{font-size:14px;margin:.2em 0}
+.saved-item .x{float:right;background:none;border:0;color:var(--muted);font-size:13px;text-decoration:underline}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+/* Toasts & celebration */
+#toasts{position:fixed;left:0;right:0;top:calc(58px + env(safe-area-inset-top,0px));z-index:50;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;padding:0 12px}
+.toast{background:var(--ink);color:#fff;padding:9px 16px;border-radius:24px;font-size:14.5px;box-shadow:0 4px 14px rgba(0,0,0,.2);animation:tin .25s ease-out}
+.toast.gold{background:var(--sun);color:#3A2604;font-weight:700}
+@keyframes tin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.modal{position:fixed;inset:0;z-index:60;background:rgba(20,40,32,.55);display:none;align-items:center;justify-content:center;padding:20px}
+.modal.on{display:flex}
+.modal .mbox{background:#fff;border-radius:18px;padding:22px;max-width:360px;width:100%;text-align:center;animation:pop .35s cubic-bezier(.3,1.5,.5,1)}
+@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+.modal .big{font-size:64px;line-height:1.1}
+.modal h3{font-size:21px;margin:6px 0;color:var(--pine)}
+
+footer{text-align:center;font-size:12.5px;color:var(--muted);padding:20px 16px 8px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* Print: passport only */
+@media print{
+  body{background:#fff}
+  .dept,.meter,nav.tabs,#toasts,.modal,footer,section.view{display:none!important}
+  section#v-pass{display:block!important;padding:0}
+  #v-pass>h2,#v-pass>.lead,.actions,.saved-item .x,.no-print{display:none!important}
+  .pass{border:2px solid #000}
+  .pass .ph{background:#fff!important;color:#000;border-bottom:2px solid #000}
+  .pass input{border:0;border-bottom:1px solid #000;border-radius:0;padding:4px 0}
+  .card,.saved-item{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="dept">
+  <div class="wrap">
+    <div class="emblem" aria-hidden="true">🏔️</div>
+    <div>
+      <strong>विद्यालयी शिक्षा विभाग, टिहरी गढ़वाल</strong>
+      <small>Department of School Education, Tehri Garhwal, Uttarakhand</small>
+    </div>
+  </div>
+</header>
+
+<div class="meter" role="status" aria-live="polite">
+  <div class="wrap">
+    <div class="alt" id="altTxt">0 <span>मीटर</span></div>
+    <div class="bar" aria-hidden="true"><i id="altBar"></i></div>
+    <div class="camp" id="campTxt">⛺ बेस कैंप</div>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- HOME -->
+<section class="view on" id="v-home" aria-labelledby="h-home">
+  <div class="hero">
+    <svg viewBox="0 0 360 170" role="img" aria-label="आपकी करियर चढ़ाई का पहाड़">
+      <polygon points="0,170 60,95 105,125 170,55 230,110 290,60 360,120 360,170" fill="#B9D2CB"/>
+      <polygon points="150,78 170,55 188,72 178,70 170,76 160,72" fill="#fff"/>
+      <polygon points="272,76 290,60 305,74 296,72 290,77 282,72" fill="#fff"/>
+      <path d="M0,170 L35,150 L95,122 L150,98 L200,70 L250,40 L285,14 L312,40 L338,70 L360,86 L360,170 Z" fill="#2F6B52"/>
+      <path d="M268,30 L285,14 L300,27 L292,26 L285,32 L277,27 Z" fill="#fff"/>
+      <path d="M0,170 L0,150 Q60,140 110,158 T220,154 T360,150 L360,170Z" fill="#1E4D3A"/>
+      <polyline id="trailLine" points="40,150 105,126 165,100 225,64 285,16" fill="none" stroke="#FDF2DD" stroke-width="2.5" stroke-dasharray="4 5" stroke-linecap="round"/>
+      <g id="camps"></g>
+      <g transform="translate(285,16)"><line x1="0" y1="0" x2="0" y2="-14" stroke="#1C2B33" stroke-width="1.6"/><path class="flag" d="M0,-14 L13,-10 L0,-6Z" fill="#C4314B"/></g>
+      <g id="climber" transform="translate(40,150)">
+        <circle r="9" fill="#E9A23B" stroke="#fff" stroke-width="2.5"/>
+        <text y="4.5" text-anchor="middle" font-size="11">🧗</text>
+      </g>
+    </svg>
+    <div class="txt">
+      <h1 id="h-home">करियर शिखर<em>497 करियर, 13 क्षेत्र — अपनी मंज़िल तक की चढ़ाई शुरू करें</em></h1>
+      <p class="lead">हर करियर खोलने, सहेजने और क्विज़ पूरा करने पर आपकी ऊँचाई बढ़ेगी। शिखर तक पहुँचिए!</p>
+    </div>
+  </div>
+
+  <div class="start">
+    <button data-go="quiz"><span class="ic">🧭</span><span><b>रुचि क्विज़ खेलें</b><span>7 आसान सवाल, पता करें कौन-से क्षेत्र आपके लिए हैं</span></span><span class="xp">+150 मी</span></button>
+    <button data-go="explore"><span class="ic">🔍</span><span><b>करियर खोजें (Explore)</b><span>क्षेत्र, विषय और परीक्षा चुनकर करियर देखें</span></span><span class="xp">+20 मी हर करियर</span></button>
+    <button data-go="wheel"><span class="ic">🎡</span><span><b>किस्मत का पहिया</b><span>पहिया घुमाइए, कोई नया करियर जानिए</span></span><span class="xp">+30 मी</span></button>
+  </div>
+
+  <div class="how">
+    <b>कैसे खेलें?</b>
+    <ul>
+      <li>किसी करियर पर टैप करें — पढ़ाई का रास्ता और परीक्षाएँ दिखेंगी।</li>
+      <li>पसंद आए तो ⭐ दबाकर अपने <b>करियर पासपोर्ट</b> में जोड़ें।</li>
+      <li>अलग-अलग क्षेत्रों के करियर देखकर बैज (Badges) जीतें।</li>
+      <li>आख़िर में पासपोर्ट प्रिंट करें या उसका स्क्रीनशॉट लें और घर पर चर्चा करें।</li>
+    </ul>
+  </div>
+</section>
+
+<!-- EXPLORE -->
+<section class="view" id="v-explore" aria-labelledby="h-exp">
+  <h2 id="h-exp">🔍 करियर खोजें</h2>
+  <p class="lead">नीचे से विकल्प चुनें। जितने कम विकल्प, उतने ज़्यादा करियर दिखेंगे।</p>
+  <div class="filters">
+    <div class="full">
+      <label for="fField">1. कौन-सा क्षेत्र? (Field)</label>
+      <select id="fField"></select>
+    </div>
+    <div>
+      <label for="fSubj">2. पढ़ाई कहाँ से शुरू? (Subjects)</label>
+      <select id="fSubj">
+        <option value="">सभी विकल्प</option>
+        <option value="after10">10वीं के बाद (ITI / स्किल कोर्स)</option>
+        <option value="pcm">12वीं में PCM (गणित वाला विज्ञान)</option>
+        <option value="pcb">12वीं में PCB (जीव विज्ञान)</option>
+        <option value="any">12वीं किसी भी स्ट्रीम से</option>
+      </select>
+    </div>
+    <div>
+      <label for="fExam">3. परीक्षा (Exams)</label>
+      <select id="fExam">
+        <option value="">सभी विकल्प</option>
+        <option value="none">बिना राष्ट्रीय प्रवेश परीक्षा (मेरिट / स्किल)</option>
+        <option value="jee">JEE (इंजीनियरिंग)</option>
+        <option value="neet">NEET (मेडिकल)</option>
+        <option value="cuet">CUET (विश्वविद्यालय प्रवेश)</option>
+        <option value="cat">CAT / XAT / MAT (मैनेजमेंट)</option>
+        <option value="gate">GATE (M.Tech)</option>
+        <option value="upsc">UPSC / राज्य PSC (सरकारी सेवा)</option>
+        <option value="ssc">SSC (सरकारी नौकरी)</option>
+        <option value="ibps">IBPS (बैंक)</option>
+        <option value="def">NDA / CDS / AFCAT (सेना)</option>
+        <option value="law">CLAT / AILET (क़ानून)</option>
+        <option value="nchm">NCHM JEE (होटल मैनेजमेंट)</option>
+        <option value="design">NID / NIFT / UCEED (डिज़ाइन)</option>
+      </select>
+    </div>
+    <div class="full">
+      <label for="fSearch">या करियर का नाम लिखें (English में)</label>
+      <input id="fSearch" type="search" placeholder="जैसे: Pilot, Nurse, Teacher…" autocomplete="off">
+    </div>
+  </div>
+  <div class="row-between">
+    <span class="count" id="resCount"></span>
+    <button class="linkbtn" id="resetF">सभी विकल्प हटाएँ</button>
+  </div>
+  <p class="note" id="subjNote" hidden>ध्यान दें: जिन करियर में 12वीं के विषय सूची में लिखे नहीं हैं, वे इस विकल्प में नहीं दिखेंगे। "सभी विकल्प" चुनकर उन्हें भी देखें।</p>
+  <div class="list" id="list"></div>
+  <button class="more" id="moreBtn" hidden>और करियर दिखाएँ</button>
+</section>
+
+<!-- QUIZ -->
+<section class="view" id="v-quiz" aria-labelledby="h-quiz">
+  <h2 id="h-quiz">🧭 रुचि क्विज़</h2>
+  <p class="lead">कोई जवाब ग़लत नहीं है। जो आपको सच में अच्छा लगता है, वही चुनें।</p>
+  <div class="qbox" id="qbox"></div>
+</section>
+
+<!-- WHEEL -->
+<section class="view" id="v-wheel" aria-labelledby="h-wheel">
+  <h2 id="h-wheel">🎡 किस्मत का पहिया</h2>
+  <p class="lead">पहिया घुमाइए — जिस क्षेत्र पर रुकेगा, उसका एक करियर आपके सामने होगा।</p>
+  <div class="wheel-area">
+    <div class="wheel-box">
+      <div class="pointer" aria-hidden="true"></div>
+      <div id="wheel"><svg viewBox="-110 -110 220 220" aria-hidden="true"><g id="wheelG"></g></svg></div>
+      <svg class="hub" viewBox="-110 -110 220 220" aria-hidden="true"><circle r="16" fill="#fff" stroke="#1E4D3A" stroke-width="4"/><text y="6" text-anchor="middle" font-size="16">🏔️</text></svg>
+    </div>
+    <button class="btn red spin-btn" id="spinBtn">पहिया घुमाएँ!</button>
+    <div id="spinOut" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- PASSPORT -->
+<section class="view" id="v-pass" aria-labelledby="h-pass">
+  <h2 id="h-pass">🎒 मेरा करियर पासपोर्ट</h2>
+  <p class="lead">आपके पसंदीदा करियर और जीते हुए बैज। प्रिंट करें या स्क्रीनशॉट लेकर घर पर दिखाएँ।</p>
+  <div class="pass">
+    <div class="ph"><span style="font-size:30px">🏔️</span><div><b>करियर शिखर पासपोर्ट</b><small>विद्यालयी शिक्षा विभाग, टिहरी गढ़वाल, उत्तराखण्ड</small></div></div>
+    <div class="pb">
+      <label for="pName" class="note">विद्यार्थी का नाम व कक्षा (सिर्फ़ इस स्क्रीन पर दिखेगा, कहीं सेव नहीं होता)</label>
+      <input id="pName" placeholder="जैसे: अंजलि रावत, कक्षा 10" autocomplete="off">
+      <div class="stats">
+        <div><b id="sAlt">0</b><span>ऊँचाई (मीटर)</span></div>
+        <div><b id="sSeen">0</b><span>करियर देखे</span></div>
+        <div><b id="sFields">0/13</b><span>क्षेत्र घूमे</span></div>
+      </div>
+      <h3>🏅 मेरे बैज</h3>
+      <div class="badges" id="badges"></div>
+      <h3 style="margin-top:18px">⭐ मेरे पसंदीदा करियर</h3>
+      <div id="savedList"></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn" id="printBtn">🖨️ प्रिंट / PDF सेव करें</button>
+    <button class="btn ghost" id="resetAll">🔄 नया विद्यार्थी शुरू करें</button>
+  </div>
+  <p class="note" style="margin-top:10px">साझा फ़ोन या कंप्यूटर पर: अपना काम पूरा होने के बाद "नया विद्यार्थी शुरू करें" दबाएँ, ताकि अगला विद्यार्थी शुरुआत से खेल सके। पेज बंद करने पर भी सब अपने-आप मिट जाता है।</p>
+</section>
+
+</main>
+
+<footer>करियर शिखर · विद्यालयी शिक्षा विभाग, टिहरी गढ़वाल, उत्तराखण्ड<br>यह उपकरण कोई जानकारी एकत्र नहीं करता और बिना इंटरनेट के भी चलता है।</footer>
+
+<nav class="tabs" aria-label="मुख्य मेनू">
+  <div class="wrap" role="tablist">
+    <button role="tab" data-go="home" aria-selected="true"><b>🏔️</b>शुरुआत</button>
+    <button role="tab" data-go="quiz" aria-selected="false"><b>🧭</b>क्विज़</button>
+    <button role="tab" data-go="explore" aria-selected="false"><b>🔍</b>खोजें</button>
+    <button role="tab" data-go="wheel" aria-selected="false"><b>🎡</b>पहिया</button>
+    <button role="tab" data-go="pass" aria-selected="false"><b>🎒</b>पासपोर्ट<span class="badge-count" id="savedCount" hidden>0</span></button>
+  </div>
+</nav>
+
+<div id="toasts" aria-live="polite"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="mbox"><div class="big" id="mIcon"></div><h3 id="mTitle"></h3><p id="mText" class="lead"></p><button class="btn" id="mClose" style="margin-top:12px">आगे बढ़ें</button></div>
+</div>
+
+<script>
+const RAW = {"fields":["Agriculture and Allied Sciences","Arts, Media, Marketing and Entertainment","Business and Finance","Education and Training","Health and Wellness","Engineering","Government Services","Information Technology","Management","Operations, Logistics, and Hospitality","Public Policy, Law, and Safety","Research and Development","Technical and Skill Trades"],"rows":[[0,"Agricultural Engineer","10+2 (PCM) → B.Tech Agricultural Engineering","JEE Main; state CETs; CUET","pcm","jee cuet"],[0,"Agronomist","10+2 (Science, PCB/PCM) → B.Sc (Hons.) Agriculture / allied; M.Sc for research","CUET (UG); state agriculture CETs","pcm pcb","cuet"],[0,"Animal Health Worker","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Aquaculture Worker","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Dairy Farmer/Entrepreneur","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Dairy Technologist","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Farmer: Backyard Poultry/Small Poultry","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Fish and Sea Food Processor","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Fisheries Development Officer","10+2 (PCB) → B.F.Sc / B.Sc Agriculture","State PSC; CUET (UG)","pcb","cuet upsc"],[0,"Fisheries Extension Officer","10+2 (PCB) → B.F.Sc / B.Sc Agriculture","State PSC; CUET (UG)","pcb","cuet upsc"],[0,"Fisheries Officer","10+2 (PCB) → B.F.Sc / B.Sc Agriculture","State PSC; CUET (UG)","pcb","cuet upsc"],[0,"Fishery Technician/Aquaculture Technician","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Florist","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Horticulturist","10+2 (Science, PCB/PCM) → B.Sc (Hons.) Agriculture / allied; M.Sc for research","CUET (UG); state agriculture CETs","pcm pcb","cuet"],[0,"Hydroponics Technician","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Pisciculturist","10+2 (Science, PCB/PCM) → B.Sc (Hons.) Agriculture / allied; M.Sc for research","CUET (UG); state agriculture CETs","pcm pcb","cuet"],[0,"Seed Technologist","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Shrimp Farmer","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Soil Scientist","10+2 (Science, PCB/PCM) → B.Sc (Hons.) Agriculture / allied; M.Sc for research","CUET (UG); state agriculture CETs","pcm pcb","cuet"],[0,"Tea Plantation Manager","10+2 (Science, PCB/PCM) → B.Sc (Hons.) Agriculture / allied; M.Sc for research","CUET (UG); state agriculture CETs","pcm pcb","cuet"],[0,"Vegetable Grower","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[0,"Veterinarian","10+2 (PCB) → B.V.Sc & A.H. (5 yr)","NEET (UG) for veterinary seats; CUET","pcb","neet cuet"],[0,"Vineyard Grower","10+2 (Science) → Diploma / B.Sc / ITI / NSDC skill course","No national entrance exam (merit / skill / portfolio based)","pcm pcb","none"],[1,"Actor","Diploma / Degree in Film / Theatre (FTII, NSD, SRFTI)","FTII JET; NSD audition; no fixed academic exam","",""],[1,"Anchor","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Animator","10+2 → BFA (Fine / Applied Arts) / Diploma","College entrance; No national entrance exam","any",""],[1,"Archivist","BA / MA in language, literature or relevant subject","No national entrance exam (merit / skill / portfolio based)","","none"],[1,"Art Dealer","BA / MA in language, literature or relevant subject","No national entrance exam (merit / skill / portfolio based)","","none"],[1,"Art Director","10+2 (any stream) → relevant Bachelor's / Diploma","No national entrance exam (merit / skill / portfolio based)","any","none"],[1,"Art Historian","BA / MA in language, literature or relevant subject","No national entrance exam (merit / skill / portfolio based)","","none"],[1,"Artist","10+2 → BFA (Fine / Applied Arts) / Diploma","College entrance; No national entrance exam","any",""],[1,"Blogger","BA / MA in language, literature or relevant subject","No national entrance exam (merit / skill / portfolio based)","","none"],[1,"Brand Manager","BBA / MBA (Marketing) or Mass Communication","CAT / CUET; no single exam","","cuet cat"],[1,"Calligrapher","10+2 → BFA (Fine / Applied Arts) / Diploma","College entrance; No national entrance exam","any",""],[1,"Cameraperson","Diploma / Degree in Film / Theatre (FTII, NSD, SRFTI)","FTII JET; NSD audition; no fixed academic exam","",""],[1,"Cartographer","BA / MA in language, literature or relevant subject","No national entrance exam (merit / skill / portfolio based)","","none"],[1,"Cartoonist","10+2 → BFA (Fine / Applied Arts) / Diploma","College entrance; No national entrance exam","any",""],[1,"Ceramics/Glass Designer","10+2 → B.Des / Diploma in Design","NIFT; NID DAT; UCEED","any","design"],[1,"Choreographer","Training / Diploma / Degree in Music, Dance or Sound","No academic exam (audition / skill-based)","","none"],[1,"Cinematographer","Diploma / Degree in Film / Theatre (FTII, NSD, SRFTI)","FTII JET; NSD audition; no fixed academic exam","",""],[1,"Commissioning Editor","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Community Journalist","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Content Writer","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Copy Editor","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Copy Writer","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Creative Writer","BA / MA in language, literature or relevant subject","No national entrance exam (merit / skill / portfolio based)","","none"],[1,"Dancer","Training / Diploma / Degree in Music, Dance or Sound","No academic exam (audition / skill-based)","","none"],[1,"Digital Marketing Expert","BBA / MBA (Marketing) or Mass Communication","CAT / CUET; no single exam","","cuet cat"],[1,"Disc Jockey","Training / Diploma / Degree in Music, Dance or Sound","No academic exam (audition / skill-based)","","none"],[1,"Dubbing Artist or Voice Actor","Diploma / Degree in Film / Theatre (FTII, NSD, SRFTI)","FTII JET; NSD audition; no fixed academic exam","",""],[1,"Editor","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Editorial Assistant","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Fashion Designer","10+2 → B.Des / Diploma in Design","NIFT; NID DAT; UCEED","any","design"],[1,"Film Director","Diploma / Degree in Film / Theatre (FTII, NSD, SRFTI)","FTII JET; NSD audition; no fixed academic exam","",""],[1,"Film/Video Designer","10+2 → B.Des / Diploma in Design","NIFT; NID DAT; UCEED","any","design"],[1,"Illustrator","10+2 → BFA (Fine / Applied Arts) / Diploma","College entrance; No national entrance exam","any",""],[1,"Journalist","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Literary Agent","BA / MA in language, literature or relevant subject","No national entrance exam (merit / skill / portfolio based)","","none"],[1,"Marketing Manager","BBA / MBA (Marketing) or Mass Communication","CAT / CUET; no single exam","","cuet cat"],[1,"Media Planner","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Model","10+2 (any stream) → relevant Bachelor's / Diploma","No national entrance exam (merit / skill / portfolio based)","any","none"],[1,"Multimedia Designer","10+2 → B.Des / Diploma in Design","NIFT; NID DAT; UCEED","any","design"],[1,"Musician","Training / Diploma / Degree in Music, Dance or Sound","No academic exam (audition / skill-based)","","none"],[1,"Online Advertising Manager","BBA / MBA (Marketing) or Mass Communication","CAT / CUET; no single exam","","cuet cat"],[1,"Photographer","10+2 (any stream) → relevant Bachelor's / Diploma","No national entrance exam (merit / skill / portfolio based)","any","none"],[1,"Photojournalist","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Producer","Diploma / Degree in Film / Theatre (FTII, NSD, SRFTI)","FTII JET; NSD audition; no fixed academic exam","",""],[1,"Production Manager","Diploma / Degree in Film / Theatre (FTII, NSD, SRFTI)","FTII JET; NSD audition; no fixed academic exam","",""],[1,"Proofreader","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Public Relations Manager","BBA / MBA (Marketing) or Mass Communication","CAT / CUET; no single exam","","cuet cat"],[1,"Public Relations Officer","BBA / MBA (Marketing) or Mass Communication","CAT / CUET; no single exam","","cuet cat"],[1,"Publicist","BBA / MBA (Marketing) or Mass Communication","CAT / CUET; no single exam","","cuet cat"],[1,"Publisher","BA / MA in language, literature or relevant subject","No national entrance exam (merit / skill / portfolio based)","","none"],[1,"Radio Jockey (RJ)","Training / Diploma / Degree in Music, Dance or Sound","No academic exam (audition / skill-based)","","none"],[1,"Receptionist","10+2 (any stream) → relevant Bachelor's / Diploma","No national entrance exam (merit / skill / portfolio based)","any","none"],[1,"Salesman/Sales Representative","10+2 (any stream) → relevant Bachelor's / Diploma","No national entrance exam (merit / skill / portfolio based)","any","none"],[1,"Screenwriter","Diploma / Degree in Film / Theatre (FTII, NSD, SRFTI)","FTII JET; NSD audition; no fixed academic exam","",""],[1,"Scriptwriter","Diploma / Degree in Film / Theatre (FTII, NSD, SRFTI)","FTII JET; NSD audition; no fixed academic exam","",""],[1,"Sculptor","10+2 → BFA (Fine / Applied Arts) / Diploma","College entrance; No national entrance exam","any",""],[1,"Singer","Training / Diploma / Degree in Music, Dance or Sound","No academic exam (audition / skill-based)","","none"],[1,"Social Media Executive","BBA / MBA (Marketing) or Mass Communication","CAT / CUET; no single exam","","cuet cat"],[1,"Social Media Manager","BBA / MBA (Marketing) or Mass Communication","CAT / CUET; no single exam","","cuet cat"],[1,"Sound Recordist","Training / Diploma / Degree in Music, Dance or Sound","No academic exam (audition / skill-based)","","none"],[1,"Talent Manager","BBA / MBA (Marketing) or Mass Communication","CAT / CUET; no single exam","","cuet cat"],[1,"Tattoo Artist","10+2 → BFA (Fine / Applied Arts) / Diploma","College entrance; No national entrance exam","any",""],[1,"Technical Writer","BA / MA in language, literature or relevant subject","No national entrance exam (merit / skill / portfolio based)","","none"],[1,"Textile Designer","10+2 → B.Des / Diploma in Design","NIFT; NID DAT; UCEED","any","design"],[1,"Theatre Artist","Diploma / Degree in Film / Theatre (FTII, NSD, SRFTI)","FTII JET; NSD audition; no fixed academic exam","",""],[1,"Toy Designer","10+2 → B.Des / Diploma in Design","NIFT; NID DAT; UCEED","any","design"],[1,"Translator","BA / MA in language, literature or relevant subject","No national entrance exam (merit / skill / portfolio based)","","none"],[1,"Visual Communication Designer","10+2 → B.Des / Diploma in Design","NIFT; NID DAT; UCEED","any","design"],[1,"Visual Effects (VFX) Editor","10+2 → BA / BJMC / Mass Communication","University entrance; IIMC (via CUET-PG)","any","cuet"],[1,"Visual Merchandiser","10+2 (any stream) → relevant Bachelor's / Diploma","No national entrance exam (merit / skill / portfolio based)","any","none"],[2,"Actuary","Actuarial Science (Institute of Actuaries of India)","ACET (Actuarial Common Entrance Test)","",""],[2,"Bank Clerk","Graduation (any stream)","IBPS Clerk / PO; SBI; RBI Grade B","any","ibps"],[2,"Bank Manager/Branch Manager","Graduation (any stream)","IBPS Clerk / PO; SBI; RBI Grade B","any","ibps"],[2,"Bank Probationary Officer","Graduation (any stream)","IBPS Clerk / PO; SBI; RBI Grade B","any","ibps"],[2,"Business Development Coordinator","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Chartered Accountant","CA course (ICAI): Foundation → Intermediate → Final","CA Foundation / Intermediate / Final (ICAI)","",""],[2,"Company Secretary","CS course (ICSI)","CSEET → Executive → Professional (ICSI)","",""],[2,"Compliance Officer","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Contract Administrator","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Cost and Works Accountant","CMA course (ICMAI): Foundation → Inter → Final","CMA Foundation / Inter / Final (ICMAI)","",""],[2,"Customer Care Executive","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Distributor Sales Representative","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Equity Research Analyst","B.Com / BBA / Economics → MBA (Finance); CFA / FRM","CAT / CUET; CFA, FRM (professional)","","cuet cat"],[2,"Finance Manager","B.Com / BBA / Economics → MBA (Finance); CFA / FRM","CAT / CUET; CFA, FRM (professional)","","cuet cat"],[2,"Financial Accountant","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Financial Analyst","B.Com / BBA / Economics → MBA (Finance); CFA / FRM","CAT / CUET; CFA, FRM (professional)","","cuet cat"],[2,"Financial Engineer","B.Com / BBA / Economics → MBA (Finance); CFA / FRM","CAT / CUET; CFA, FRM (professional)","","cuet cat"],[2,"Insurance Agent","10+2 / Graduation + IRDAI certification","IRDAI licensing exam","any",""],[2,"International Business Manager","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Investment Banker","B.Com / BBA / Economics → MBA (Finance); CFA / FRM","CAT / CUET; CFA, FRM (professional)","","cuet cat"],[2,"Investment/Portfolio Manager","B.Com / BBA / Economics → MBA (Finance); CFA / FRM","CAT / CUET; CFA, FRM (professional)","","cuet cat"],[2,"Life Insurance Agent","10+2 / Graduation + IRDAI certification","IRDAI licensing exam","any",""],[2,"Loan Officer","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Microfinance Executive","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Property Manager","Graduation; RERA registration","No national exam; RERA registration","","none"],[2,"Real Estate Agent","Graduation; RERA registration","No national exam; RERA registration","","none"],[2,"Real Estate Consultant","Graduation; RERA registration","No national exam; RERA registration","","none"],[2,"Relationship Manager","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Risk Manager","B.Com / BBA / Economics → MBA (Finance); CFA / FRM","CAT / CUET; CFA, FRM (professional)","","cuet cat"],[2,"Service Fulfilment Executive","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Stock Broker","B.Com / BBA / Economics → MBA (Finance); CFA / FRM","CAT / CUET; CFA, FRM (professional)","","cuet cat"],[2,"Tax Auditor","B.Com / BBA → MBA (Finance / Business)","IBPS / company selection; CAT / CUET","","cuet cat ibps"],[2,"Venture Capitalist","B.Com / BBA / Economics → MBA (Finance); CFA / FRM","CAT / CUET; CFA, FRM (professional)","","cuet cat"],[3,"Academic Researcher","Master's + Ph.D in the subject","UGC-NET / CSIR-NET; SET","",""],[3,"Accent Trainer","BA / MA in language or linguistics; certification","No national entrance exam (merit / skill / portfolio based)","","none"],[3,"Assistant Professor","Master's + Ph.D in the subject","UGC-NET / CSIR-NET; SET","",""],[3,"Assistant Teacher","Graduation + B.Ed / D.El.Ed","CTET / State TET","",""],[3,"Career Counsellor","Master's in Psychology / Counselling; certification","University entrance; No national entrance exam","",""],[3,"Curriculum Developer","Graduation + B.Ed / relevant Master's","CTET / TET; UGC-NET","",""],[3,"Foreign Language Teacher","Graduation + B.Ed / D.El.Ed","CTET / State TET","",""],[3,"Interpreter","BA / MA in language or linguistics; certification","No national entrance exam (merit / skill / portfolio based)","","none"],[3,"Lecturer (College and University)","Master's + Ph.D in the subject","UGC-NET / CSIR-NET; SET","",""],[3,"Lexicographer","BA / MA in language or linguistics; certification","No national entrance exam (merit / skill / portfolio based)","","none"],[3,"Librarian","B.Lib.I.Sc → M.Lib.I.Sc","University entrance; UGC-NET (Lib. Sci.)","",""],[3,"Linguist","BA / MA in language or linguistics; certification","No national entrance exam (merit / skill / portfolio based)","","none"],[3,"Physical Educator","B.P.Ed / M.P.Ed / coaching or fitness certification","University entrance; federation certification","",""],[3,"Physical Fitness Trainer","B.P.Ed / M.P.Ed / coaching or fitness certification","University entrance; federation certification","",""],[3,"Pre-school Educator","Graduation + B.Ed / D.El.Ed","CTET / State TET","",""],[3,"Referee (Football)","B.P.Ed / M.P.Ed / coaching or fitness certification","University entrance; federation certification","",""],[3,"School Counsellor","Master's in Psychology / Counselling; certification","University entrance; No national entrance exam","",""],[3,"School Teacher","Graduation + B.Ed / D.El.Ed","CTET / State TET","",""],[3,"Special Educator","B.Ed Special Education (RCI-approved)","RCI norms; State TET","",""],[3,"Trainer","B.P.Ed / M.P.Ed / coaching or fitness certification","University entrance; federation certification","",""],[3,"Translator","BA / MA in language or linguistics; certification","No national entrance exam (merit / skill / portfolio based)","","none"],[4,"Acupuncturist","Certificate / Diploma / Degree in the therapy","No national entrance exam (mostly)","","none"],[4,"Anaesthesiologist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Aromatherapist","Certificate / Diploma / Degree in the therapy","No national entrance exam (mostly)","","none"],[4,"Athlete Development Specialist","School / academy training; sports-specific coaching","SAI trials; no academic exam","",""],[4,"Auxiliary Nurse Midwifery (ANM)","10+2 → B.Sc Nursing / GNM / ANM","NEET (UG) for B.Sc Nursing; state / GNM entrance","any","neet"],[4,"Ayurveda Doctor","10+2 (PCB) → BAMS / BHMS / BUMS / BNYS","NEET (UG)","pcb","neet"],[4,"Bacteriologist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Cardiologist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Caregiver – Persons with Disabilities (Non-clinical)","10th / 12th → NSDC healthcare skill certification","No entrance exam (skill-based)","after10","none"],[4,"Chiropractor","Certificate / Diploma / Degree in the therapy","No national entrance exam (mostly)","","none"],[4,"Clinical Psychologist","BA/MA Psychology → M.Phil / RCI (Clinical)","University entrance; RCI (clinical)","",""],[4,"Cosmetic Dermatologist","10+2 (PCB) → MBBS → MD Dermatology","NEET (UG); NEET-PG","pcb","neet"],[4,"Dance Therapist","Certificate / Diploma / Degree in the therapy","No national entrance exam (mostly)","","none"],[4,"Dentist","10+2 (PCB) → BDS → MDS","NEET (UG); NEET-MDS","pcb","neet"],[4,"Dento Oral Hygienist","10+2 (PCB) → relevant Bachelor's in the health field","NEET (UG) / university entrance","pcb","neet"],[4,"Dialysis Technician","10+2 (Science) → Diploma / B.Sc in the paramedical field","University / state paramedical entrance","pcm pcb",""],[4,"Dietician","10+2 (Science) → B.Sc Nutrition & Dietetics","University entrance","pcm pcb",""],[4,"Ear Nose Throat Doctor","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Elderly Caretaker (Non-clinical)","10th / 12th → NSDC healthcare skill certification","No entrance exam (skill-based)","after10","none"],[4,"Emergency Medical Technician (EMT)","10+2 (Science) → Diploma / B.Sc in the paramedical field","University / state paramedical entrance","pcm pcb",""],[4,"Endocrinologist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"General Duty Assistant-Advanced Options: Maternal and Newborn Care/Critical Care/Dialysis/Parturition","10+2 (Science) → Diploma / B.Sc in the paramedical field","University / state paramedical entrance","pcm pcb",""],[4,"General Nurse and Midwife (GNM)","10+2 → B.Sc Nursing / GNM / ANM","NEET (UG) for B.Sc Nursing; state / GNM entrance","any","neet"],[4,"General Physician","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Gynaecologist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Health, Safety and Environment Officer","10+2 (PCB) → relevant Bachelor's in the health field","NEET (UG) / university entrance","pcb","neet"],[4,"Healthcare Manager","BBA / MBA Hospital Management","CAT / CUET; university entrance","","cuet cat"],[4,"Homeopathy Doctor","10+2 (PCB) → BAMS / BHMS / BUMS / BNYS","NEET (UG)","pcb","neet"],[4,"Immunologist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Lifeguard (Pool Guard, Beach Lifeguard, Life Saver)","10+2 (PCB) → relevant Bachelor's in the health field","NEET (UG) / university entrance","pcb","neet"],[4,"Massage Therapist","Certificate / Diploma / Degree in the therapy","No national entrance exam (mostly)","","none"],[4,"Medical Representative","Life-science graduate (B.Sc / B.Pharm)","No national entrance exam (merit / skill / portfolio based)","","none"],[4,"Medical Technician","10+2 (Science) → Diploma / B.Sc in the paramedical field","University / state paramedical entrance","pcm pcb",""],[4,"Medical Transcriptionist","Life-science graduate (B.Sc / B.Pharm)","No national entrance exam (merit / skill / portfolio based)","","none"],[4,"Medical Writer","Life-science graduate (B.Sc / B.Pharm)","No national entrance exam (merit / skill / portfolio based)","","none"],[4,"Naturopathic Doctor","10+2 (PCB) → BAMS / BHMS / BUMS / BNYS","NEET (UG)","pcb","neet"],[4,"Nurse","10+2 → B.Sc Nursing / GNM / ANM","NEET (UG) for B.Sc Nursing; state / GNM entrance","any","neet"],[4,"Nutritionist","10+2 (Science) → B.Sc Nutrition & Dietetics","University entrance","pcm pcb",""],[4,"Occupational Therapist","10+2 (PCB) → BOT","University / state entrance","pcb",""],[4,"Oncologist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Ophthalmologist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Optometrist","10+2 (PCB) → B.Optom / Diploma Optometry","University / state entrance","pcb",""],[4,"Orthopaedist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Orthotist/Prosthetist","10+2 (PCB) → BPO (Prosthetics & Orthotics)","University entrance","pcb",""],[4,"Paediatrician","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Palliative and Hospice Care Specialist","10+2 (PCB) → relevant Bachelor's in the health field","NEET (UG) / university entrance","pcb","neet"],[4,"Paramedic","10+2 (Science) → Diploma / B.Sc in the paramedical field","University / state paramedical entrance","pcm pcb",""],[4,"Perfusion Technologist","10+2 (Science) → Diploma / B.Sc in the paramedical field","University / state paramedical entrance","pcm pcb",""],[4,"Periodontist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Pharmacist","10+2 (PCB/PCM) → D.Pharm / B.Pharm","State pharmacy CETs; GPAT (M.Pharm)","pcm pcb",""],[4,"Phlebotomist/Phleobotomy Technician","10+2 (Science) → Diploma / B.Sc in the paramedical field","University / state paramedical entrance","pcm pcb",""],[4,"Physiotherapist","10+2 (PCB) → BPT (4½ yr)","University / state entrance","pcb",""],[4,"Psychiatrist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Psychological Counsellor/Counselling Psychologist","BA/MA Psychology → M.Phil / RCI (Clinical)","University entrance; RCI (clinical)","",""],[4,"Public Health Officer","MBBS / B.Sc → MPH (Master of Public Health)","NEET for medical route; university entrance","","neet"],[4,"Pulmonologist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Radiologist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Rehabilitation Specialist","10+2 (PCB) → relevant Bachelor's in the health field","NEET (UG) / university entrance","pcb","neet"],[4,"Speech and Language Therapist (SLP)/Audiologist","10+2 (PCB) → BASLP (RCI)","University entrance (RCI norms)","pcb",""],[4,"Sports Analyst","School / academy training; sports-specific coaching","SAI trials; no academic exam","",""],[4,"Sports Coach","B.P.Ed / NIS Coaching Diploma (SAI)","SAI / NIS trials; no academic exam","",""],[4,"Sports Medicine Specialist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Sports Psychologist","BA/MA Psychology → M.Phil / RCI (Clinical)","University entrance; RCI (clinical)","",""],[4,"Sports Scout","School / academy training; sports-specific coaching","SAI trials; no academic exam","",""],[4,"Sportsperson","School / academy training; sports-specific coaching","SAI trials; no academic exam","",""],[4,"Surgeon","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Technician – Dental","10+2 (Science) → Diploma / B.Sc in the paramedical field","University / state paramedical entrance","pcm pcb",""],[4,"Umpire (Cricket)","School / academy training; sports-specific coaching","SAI trials; no academic exam","",""],[4,"Unani Doctor","10+2 (PCB) → BAMS / BHMS / BUMS / BNYS","NEET (UG)","pcb","neet"],[4,"Urologist","10+2 (PCB) → MBBS → MD / MS / DM (specialisation)","NEET (UG); NEET-PG; NEET-SS","pcb","neet"],[4,"Yoga Instructor","Certificate / Diploma / Degree in the therapy","No national entrance exam (mostly)","","none"],[5,"Aeronautical Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Automobile Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Bioinformatics Engineering","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Biomedical Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Biotechnology Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Broadcast Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"CAD Designer for Carpets","10+2 → B.Des / B.Tech (Design) / Diploma","UCEED; NID; JEE (for B.Tech)","any","jee design"],[5,"CAD Jewellery Designer","10+2 → B.Des / B.Tech (Design) / Diploma","UCEED; NID; JEE (for B.Tech)","any","jee design"],[5,"Ceramic Technologist/Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Chemical Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Civil Engineer/Structural Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Corrosion Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Design Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Development Operations Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Electrical and Electronics Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Electronics and Communication Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Electronics Designer/VLSI/Embedded System Designer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Environmental Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Fire and Safety Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Food Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Footwear Designer","10+2 → B.Des / B.Tech (Design) / Diploma","UCEED; NID; JEE (for B.Tech)","any","jee design"],[5,"Forensic Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Geo-informatics Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Graphics Designer","10+2 → B.Des / B.Tech (Design) / Diploma","UCEED; NID; JEE (for B.Tech)","any","jee design"],[5,"Industrial Designer","10+2 → B.Des / B.Tech (Design) / Diploma","UCEED; NID; JEE (for B.Tech)","any","jee design"],[5,"Industrial Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Instrumentation Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Manufacturing Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Marine Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Mechanical Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Metallurgy Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Mining Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Nanotechnology/Nanoscience Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Optical Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Petroleum Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Pharmaceutical Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Printing Engineer/Technologist","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Process Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Product Designer","10+2 → B.Des / B.Tech (Design) / Diploma","UCEED; NID; JEE (for B.Tech)","any","jee design"],[5,"Quality Assurance Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Railway Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Robotics Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Sales Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Smart Manufacturing and Automation Engineering","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Sound Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Textile Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Tool Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[5,"Water Resource Engineer","10+2 (PCM) → B.E. / B.Tech (relevant branch); Diploma via Polytechnic","JEE Main & Advanced; state CETs; GATE (M.Tech)","pcm","jee gate"],[6,"Agniveer","10th / 12th (as per trade)","Agnipath (Agniveer) recruitment exam","after10",""],[6,"Border Security Force","Graduation (Officer) / 10+2 (other ranks)","UPSC CAPF (AC); SSC; department recruitment","","upsc ssc"],[6,"CISF Officer","Graduation (Officer) / 10+2 (other ranks)","UPSC CAPF (AC); SSC; department recruitment","","upsc ssc"],[6,"Coast Guard","10+2 / Graduation","Indian Coast Guard recruitment exam","any",""],[6,"CRPF Officer","Graduation (Officer) / 10+2 (other ranks)","UPSC CAPF (AC); SSC; department recruitment","","upsc ssc"],[6,"Customs Officer","Graduation","SSC CGL","","ssc"],[6,"FSSAI Officer","Science graduate","UPSC / SSC (FSSAI recruitment)","","upsc ssc"],[6,"Gramin Dak Sevak","10th pass","No exam — merit (10th marks)","after10","none"],[6,"Indian Administrative Service","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Indian Air Force Officer","10+2 (PCM for tech) / Graduation","NDA (after 12th); CDS (after graduation); AFCAT","pcm","def"],[6,"Indian Army Officer","10+2 (PCM for tech) / Graduation","NDA (after 12th); CDS (after graduation); AFCAT","pcm","def"],[6,"Indian Foreign Service","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Indian Forest Service","Graduation (with science subjects for IFoS)","UPSC Indian Forest Service Exam","","upsc"],[6,"Indian Home Guard","10th / 12th","State Home Guard recruitment","after10",""],[6,"Indian Navy Officer","10+2 (PCM for tech) / Graduation","NDA (after 12th); CDS (after graduation); AFCAT","pcm","def"],[6,"Indian Police Service","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Indian Railway Accounts Service","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Indian Railway Personnel Service","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Indian Railway Service of Electrical Engineers","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Indian Railway Service of Engineers","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Indian Railway Service of Mechanical Engineers","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Indian Railway Service of Signal Engineers","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Indian Railway Stores Service","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Indian Railways Traffic Service","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Indian Revenue Service","Graduation (any stream)","UPSC Civil Services Exam (Prelims-Mains-Interview)","any","upsc"],[6,"Inspector of Income Tax","Graduation","SSC CGL","","ssc"],[6,"ITBP Officer","Graduation (Officer) / 10+2 (other ranks)","UPSC CAPF (AC); SSC; department recruitment","","upsc ssc"],[6,"Loco Pilot","10th + ITI / Diploma","RRB ALP (Assistant Loco Pilot)","after10",""],[6,"Merchant Navy","10+2 (PCM) → DNS / B.Tech Marine (IMU)","IMU-CET","pcm",""],[6,"Police Constable","10+2","State Police recruitment; SSC (Delhi Police)","any","ssc"],[6,"Railway Protection Force","10+2","RRB / RPF recruitment","any",""],[6,"Sashastra Seema Bal Officer","Graduation (Officer) / 10+2 (other ranks)","UPSC CAPF (AC); SSC; department recruitment","","upsc ssc"],[6,"Sub-inspector of Police","Graduation","State PSC / SSC (Sub-Inspector)","","upsc ssc"],[7,"Artificial Intelligence Engineer","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Augmented Reality Engineer","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Big Data Analyst","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Blockchain Developer","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Cloud Engineer","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Computer Hardware Engineer","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Computer Network Architect","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Computer Science Engineer","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Computer Scientist","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Cyber Security Specialist","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Data Scientist","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Database Administrator","BCA / B.Sc IT / Diploma + industry certifications","No national entrance exam (skill / certification)","","none"],[7,"Full Stack Developer","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Game Designer and Developer","10+2 → B.Des / BCA / Diploma in design or development","UCEED / NID / NIFT; no single exam","any","design"],[7,"Help Desk Analyst","BCA / B.Sc IT / Diploma + industry certifications","No national entrance exam (skill / certification)","","none"],[7,"Information Technology Engineer","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Internet of Things Solutions Architect","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Network Administrator","BCA / B.Sc IT / Diploma + industry certifications","No national entrance exam (skill / certification)","","none"],[7,"Programmer/Coder/Software Engineer","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"SEO Manager","BCA / B.Sc IT / Diploma + industry certifications","No national entrance exam (skill / certification)","","none"],[7,"Software Application Packager","BCA / B.Sc IT / Diploma + industry certifications","No national entrance exam (skill / certification)","","none"],[7,"Systems Analyst","BCA / B.Sc IT / Diploma + industry certifications","No national entrance exam (skill / certification)","","none"],[7,"User Experience Designer","10+2 → B.Des / BCA / Diploma in design or development","UCEED / NID / NIFT; no single exam","any","design"],[7,"Virtual Reality Engineer","10+2 (PCM) → B.Tech CSE/IT or BCA → MCA; specialisation certifications","JEE Main; CUET; state CETs","pcm","jee cuet"],[7,"Web Analyst","BCA / B.Sc IT / Diploma + industry certifications","No national entrance exam (skill / certification)","","none"],[7,"Web Designer","10+2 → B.Des / BCA / Diploma in design or development","UCEED / NID / NIFT; no single exam","any","design"],[8,"Assistant Catering Manager","BBA → MBA / PGDM (relevant specialisation)","CAT / XAT / CMAT / MAT / CUET","","cuet cat"],[8,"BPO Executive","Graduation (any stream)","No entrance exam (company selection)","any","none"],[8,"Event Manager","BBA → MBA / PGDM (relevant specialisation)","CAT / XAT / CMAT / MAT / CUET","","cuet cat"],[8,"Human Resource Manager","BBA → MBA / PGDM (relevant specialisation)","CAT / XAT / CMAT / MAT / CUET","","cuet cat"],[8,"Inventory Manager","BBA → MBA / PGDM (relevant specialisation)","CAT / XAT / CMAT / MAT / CUET","","cuet cat"],[8,"Knowledge Process Outsourcing Executive","BBA → MBA / PGDM (relevant specialisation)","CAT / XAT / CMAT / MAT / CUET","","cuet cat"],[8,"Purchasing and Materials Manager","BBA → MBA / PGDM (relevant specialisation)","CAT / XAT / CMAT / MAT / CUET","","cuet cat"],[8,"Retail Manager","BBA → MBA / PGDM (relevant specialisation)","CAT / XAT / CMAT / MAT / CUET","","cuet cat"],[8,"Rural Development Specialist/Manager","MBA Rural Management / MSW / MA Rural Development","IRMA (IRMASAT); CUET-PG; TISS","","cuet"],[8,"Sales and Marketing Manager","BBA → MBA / PGDM (relevant specialisation)","CAT / XAT / CMAT / MAT / CUET","","cuet cat"],[8,"Sports Agent/Manager","BBA → MBA / PGDM (relevant specialisation)","CAT / XAT / CMAT / MAT / CUET","","cuet cat"],[8,"Sports Equipment Manager","BBA → MBA / PGDM (relevant specialisation)","CAT / XAT / CMAT / MAT / CUET","","cuet cat"],[9,"Air Hostess/Purser","10+2 + Aviation / Hospitality diploma","No national exam (institute selection)","any","none"],[9,"Air Traffic Controller","10+2 (PCM) / Engineering → AAI","AAI Air Traffic Control exam","pcm",""],[9,"Aircraft Pilot","10+2 (PCM) → CPL (Commercial Pilot Licence)","DGCA CPL exams; flying-school entrance","pcm",""],[9,"Airline Cargo Assistant","10+2 + Aviation / Hospitality diploma","No national exam (institute selection)","any","none"],[9,"Airline Customer Service Executive","10+2 + Aviation / Hospitality diploma","No national exam (institute selection)","any","none"],[9,"Airline Ground Support Equipment Operator","10+2 + Aviation / Hospitality diploma","No national exam (institute selection)","any","none"],[9,"Auctioneer","Graduation → MBA / Diploma in Logistics & SCM","CAT / CUET; no single exam","","cuet cat"],[9,"Bartender/Mixologist","10+2 → BHM (Hotel Management) / Diploma","NCHM JEE","any","nchm"],[9,"Bulldozer Operator","10th / 12th + skill training / licence","No entrance exam (licence / skill-based)","after10","none"],[9,"Cold Chain Process Management Specialist","Graduation → MBA / Diploma in Logistics & SCM","CAT / CUET; no single exam","","cuet cat"],[9,"Commercial Driver","10th / 12th + skill training / licence","No entrance exam (licence / skill-based)","after10","none"],[9,"Conveyor Operation and Maintenance Technician","10th / 12th + skill training / licence","No entrance exam (licence / skill-based)","after10","none"],[9,"Distribution Manager","Graduation → MBA / Diploma in Logistics & SCM","CAT / CUET; no single exam","","cuet cat"],[9,"Food and Beverage Manager","10+2 → BHM (Hotel Management) / Diploma","NCHM JEE","any","nchm"],[9,"Front Office Associate","10+2 → BHM (Hotel Management) / Diploma","NCHM JEE","any","nchm"],[9,"Logistics Analyst","Graduation → MBA / Diploma in Logistics & SCM","CAT / CUET; no single exam","","cuet cat"],[9,"Logistics Manager","Graduation → MBA / Diploma in Logistics & SCM","CAT / CUET; no single exam","","cuet cat"],[9,"Multi-tasking Staff","10th / 12th + skill training / licence","No entrance exam (licence / skill-based)","after10","none"],[9,"Nature Guide","10+2 / Graduation + Tourism diploma; MoT certification","Ministry of Tourism guide test; no single exam","any",""],[9,"Office Administrator","Graduation → MBA / Diploma in Logistics & SCM","CAT / CUET; no single exam","","cuet cat"],[9,"Operations Manager","Graduation → MBA / Diploma in Logistics & SCM","CAT / CUET; no single exam","","cuet cat"],[9,"Package Dyeing Machine Operator","10th / 12th + skill training / licence","No entrance exam (licence / skill-based)","after10","none"],[9,"Port Operations Manager","Graduation → MBA / Diploma in Logistics & SCM","CAT / CUET; no single exam","","cuet cat"],[9,"Secretary/Personal Assistant","Graduation → MBA / Diploma in Logistics & SCM","CAT / CUET; no single exam","","cuet cat"],[9,"Sommelier","10+2 → BHM (Hotel Management) / Diploma","NCHM JEE","any","nchm"],[9,"Supply Chain Manager","Graduation → MBA / Diploma in Logistics & SCM","CAT / CUET; no single exam","","cuet cat"],[9,"Tour Guide","10+2 / Graduation + Tourism diploma; MoT certification","Ministry of Tourism guide test; no single exam","any",""],[9,"Tour Operator","10+2 / Graduation + Tourism diploma; MoT certification","Ministry of Tourism guide test; no single exam","any",""],[9,"Transportation Manager","Graduation → MBA / Diploma in Logistics & SCM","CAT / CUET; no single exam","","cuet cat"],[9,"Travel Consultant","10+2 / Graduation + Tourism diploma; MoT certification","Ministry of Tourism guide test; no single exam","any",""],[9,"Urban Planner","B.Arch / B.Plan → M.Plan","NATA / JEE (B.Arch); CUET","","jee cuet"],[10,"Arbitrator","LLB + experience; arbitration certification","Bar Council enrolment; no separate exam","",""],[10,"Corporate Legal Advisor/Compliance Officer","10+2 → BA LLB (5 yr) or Graduation → LLB (3 yr)","CLAT; AILET; LSAT-India","any","law"],[10,"Detective","Graduation; private-investigation certification","No national entrance exam (merit / skill / portfolio based)","","none"],[10,"Firefighter","10+2 + Fire & Safety diploma; physical test","State Fire Services recruitment","any",""],[10,"Human Rights Lawyer","10+2 → BA LLB (5 yr) or Graduation → LLB (3 yr)","CLAT; AILET; LSAT-India","any","law"],[10,"International Relations Specialist","MA Public Policy / Political Science / IR","CUET-PG; university entrance","","cuet"],[10,"Judge","LLB → Judicial Services","State Judicial Services Exam (Civil Judge)","",""],[10,"Lawyer/Law Officer/Advocate","10+2 → BA LLB (5 yr) or Graduation → LLB (3 yr)","CLAT; AILET; LSAT-India","any","law"],[10,"Medico Legal Advisor","10+2 → BA LLB (5 yr) or Graduation → LLB (3 yr)","CLAT; AILET; LSAT-India","any","law"],[10,"Patent Lawyer","Science/Engg degree + LLB; Patent Agent qualification","CLAT; Patent Agent Exam","","law"],[10,"Psephologist","MA Public Policy / Political Science / IR","CUET-PG; university entrance","","cuet"],[10,"Public Policy Advisor","MA Public Policy / Political Science / IR","CUET-PG; university entrance","","cuet"],[10,"Social Worker","BSW → MSW","University entrance; TISSNET / CUET","","cuet"],[10,"Sports Lawyer","10+2 → BA LLB (5 yr) or Graduation → LLB (3 yr)","CLAT; AILET; LSAT-India","any","law"],[10,"Unarmed Security Guard","10th + PSARA-approved training","No exam (skill-based)","after10","none"],[11,"Anthropologist","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Archaeologist","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Astrophysicist","B.Sc / B.Tech → M.Sc / M.Tech (Physics) → Ph.D","IISER Aptitude Test; JEE; JEST; JAM","","jee"],[11,"Botanist","B.Sc → M.Sc (relevant science) → Ph.D","CUET; JAM; CSIR-UGC NET","","cuet"],[11,"Child Development Specialist","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Criminologist","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Curator","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Cytologist/Cytotechnologist","B.Sc → M.Sc (relevant science) → Ph.D","CUET; JAM; CSIR-UGC NET","","cuet"],[11,"Data Collector or Field Survey Enumerator","Graduation / Diploma in the relevant field","Organisation recruitment; no single exam","",""],[11,"Demographer","BA/B.Sc → MA/M.Sc (Economics / Statistics / Maths) → Ph.D","ISI Admission Test; CUET-PG; JAM","pcm","cuet"],[11,"Ecologist","B.Sc → M.Sc (relevant science) → Ph.D","CUET; JAM; CSIR-UGC NET","","cuet"],[11,"Economist","BA/B.Sc → MA/M.Sc (Economics / Statistics / Maths) → Ph.D","ISI Admission Test; CUET-PG; JAM","pcm","cuet"],[11,"Engineering Physicist","B.Sc / B.Tech → M.Sc / M.Tech (Physics) → Ph.D","IISER Aptitude Test; JEE; JEST; JAM","","jee"],[11,"English Literature Scholar","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Epigraphist","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Forensic Scientist","B.Sc / M.Sc Forensic Science","University entrance; CUET","","cuet"],[11,"Genetic Engineer","B.Tech / M.Sc Biotechnology → Ph.D","JEE; GAT-B; CUET","","jee cuet"],[11,"Geographer","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Geologist","B.Sc → M.Sc (relevant science) → Ph.D","CUET; JAM; CSIR-UGC NET","","cuet"],[11,"Historian","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Mathematician","BA/B.Sc → MA/M.Sc (Economics / Statistics / Maths) → Ph.D","ISI Admission Test; CUET-PG; JAM","pcm","cuet"],[11,"Meteorologist","B.Sc → M.Sc (relevant science) → Ph.D","CUET; JAM; CSIR-UGC NET","","cuet"],[11,"Museologist","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Nanoscientist","B.Sc / B.Tech → M.Sc / M.Tech (Physics) → Ph.D","IISER Aptitude Test; JEE; JEST; JAM","","jee"],[11,"Paleontologist","10+2 (Science) → B.Sc → M.Sc → Ph.D","CUET; IISER / JAM; CSIR-UGC NET, GATE","pcm pcb","cuet gate"],[11,"Physicist","B.Sc / B.Tech → M.Sc / M.Tech (Physics) → Ph.D","IISER Aptitude Test; JEE; JEST; JAM","","jee"],[11,"Political Scientist","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Scientific Assistant","Graduation / Diploma in the relevant field","Organisation recruitment; no single exam","",""],[11,"Seismologist","B.Sc → M.Sc (relevant science) → Ph.D","CUET; JAM; CSIR-UGC NET","","cuet"],[11,"Sociologist","BA → MA (relevant subject) → Ph.D","CUET; UGC-NET","","cuet"],[11,"Space Scientist","B.Sc / B.Tech → M.Sc / M.Tech (Physics) → Ph.D","IISER Aptitude Test; JEE; JEST; JAM","","jee"],[11,"Statistician","BA/B.Sc → MA/M.Sc (Economics / Statistics / Maths) → Ph.D","ISI Admission Test; CUET-PG; JAM","pcm","cuet"],[11,"Toxicologist","B.Sc → M.Sc (relevant science) → Ph.D","CUET; JAM; CSIR-UGC NET","","cuet"],[11,"Virologist","B.Sc → M.Sc (relevant science) → Ph.D","CUET; JAM; CSIR-UGC NET","","cuet"],[11,"Zoologist","B.Sc → M.Sc (relevant science) → Ph.D","CUET; JAM; CSIR-UGC NET","","cuet"],[12,"Appliqué Artisan","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Assistant Beauty Therapist","10th → NSDC / ITI Beauty & Wellness certification","No exam (skill-based)","after10","none"],[12,"Assistant Carpenter (Wooden Furniture)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Assistant False Ceiling and Drywall Installer","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Assistant Fitter (Levelling, Alignment and Balancing)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Assistant Hair Stylist","10th → NSDC / ITI Beauty & Wellness certification","No exam (skill-based)","after10","none"],[12,"Assistant Surveyor","ITI (Draughtsman / Survey) / Diploma Civil Engineering","No national exam (ITI merit)","","none"],[12,"Auto Service Technician","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Auto/E-Rickshaw Driver and Technician","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Automotive Electrician","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Bamboo Mat Weaver","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Bamboo Utility Product Tailor","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Cake Artist","10+2 → BHM / Diploma in Culinary Arts / NSDC","NCHM JEE (for BHM); else no exam","any","nchm"],[12,"Camp Helper","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"CCTV Installation Technician","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Chef","10+2 → BHM / Diploma in Culinary Arts / NSDC","NCHM JEE (for BHM); else no exam","any","nchm"],[12,"Child Caretaker (Non-clinical)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Chocolatier","10+2 → BHM / Diploma in Culinary Arts / NSDC","NCHM JEE (for BHM); else no exam","any","nchm"],[12,"CNC Operator (Turning)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Coffee Taster/Barista/Q Grader","10+2 → BHM / Diploma in Culinary Arts / NSDC","NCHM JEE (for BHM); else no exam","any","nchm"],[12,"Construction-Painter and Decorator","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Crochet Lace Maker – Furnishings","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Doors and Windows Fixer","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Draughtsman","ITI (Draughtsman / Survey) / Diploma Civil Engineering","No national exam (ITI merit)","","none"],[12,"DTH Set Top Box Installation and Service Technician","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"E-waste Collector","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Electric Vehicle Assembly Technician","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Electrician (General)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Field Technician- Other Home Appliances","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Fitter (Electrical and Electronic Assembly)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Fitter (Fabrication)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Fitter (Mechanical Assembly)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Fitter (Processing)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Food and Beverage Service Steward","10+2 → BHM / Diploma in Culinary Arts / NSDC","NCHM JEE (for BHM); else no exam","any","nchm"],[12,"General Housekeeper","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Helper (Carpenter)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Helper-Fabrication","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Home Cook","10+2 → BHM / Diploma in Culinary Arts / NSDC","NCHM JEE (for BHM); else no exam","any","nchm"],[12,"Home Delivery Boy","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Housekeeping Attendant (Manual Cleaning)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Industrial Production Worker (Food Processing)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Installer – Frameless Glass Doors/Windows","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Jute Handloom Weaver","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Kitchen Steward","10+2 → BHM / Diploma in Culinary Arts / NSDC","NCHM JEE (for BHM); else no exam","any","nchm"],[12,"Lapidarist","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Leather Technologist","10+2 (PCM) → B.Tech (relevant Technology)","JEE Main; state CETs; CUET","pcm","jee cuet"],[12,"Light Motor Vehicle Driver","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Mason (General)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Mason (Stone)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Mason (Tiling)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Master Hand Embroiderer (Hand Crafted Textiles)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Mechanical Fitter","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Multi Skill Technician (Electrical)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Multi Skill Technician (Food Processing)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Oil Technologist","10+2 (PCM) → B.Tech (relevant Technology)","JEE Main; state CETs; CUET","pcm","jee cuet"],[12,"Operator-Boring Machine","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Pastry Chef","10+2 → BHM / Diploma in Culinary Arts / NSDC","NCHM JEE (for BHM); else no exam","any","nchm"],[12,"Plumber","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Refrigeration Technician","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Retail Cashier","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Retail Store Operations Assistant","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Room Attendant","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Rubber Technologist","10+2 (PCM) → B.Tech (relevant Technology)","JEE Main; state CETs; CUET","pcm","jee cuet"],[12,"Self-employed E-tailer","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Sewing Machine Operator","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Showroom Hostess/Host","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Smartphone Repair Technician","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Solar and LED Technician","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Spa Therapist","10th → NSDC / ITI Beauty & Wellness certification","No exam (skill-based)","after10","none"],[12,"Stone Cutter (Cutting Machine Operator) – Stone Craft","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Store Keeper (Construction)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Stringing/Beading Artisan (Fashion Jewellery)","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Sugar Technologist","10+2 (PCM) → B.Tech (relevant Technology)","JEE Main; state CETs; CUET","pcm","jee cuet"],[12,"Tea Taster","10+2 → BHM / Diploma in Culinary Arts / NSDC","NCHM JEE (for BHM); else no exam","any","nchm"],[12,"Tour Operator","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Tower Technician","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Trainee Chef/Assistant Cook","10+2 → BHM / Diploma in Culinary Arts / NSDC","NCHM JEE (for BHM); else no exam","any","nchm"],[12,"Waste Collector","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"],[12,"Wood Polisher","10th / 12th → ITI trade / NSDC skill certification / apprenticeship","No national entrance exam (ITI on merit; skill certification)","after10","none"]]};
+
+// ---------- Field labels (Hindi + English) ----------
+const FIELD_META = {
+  "Agriculture and Allied Sciences":["कृषि एवं संबद्ध विज्ञान","🌾","#6E9E3A"],
+  "Arts, Media, Marketing and Entertainment":["कला, मीडिया, मार्केटिंग एवं मनोरंजन","🎨","#C4314B"],
+  "Business and Finance":["व्यापार एवं वित्त (Business)","💼","#8A6D3B"],
+  "Education and Training":["शिक्षा एवं प्रशिक्षण","📚","#3B7EA1"],
+  "Health and Wellness":["स्वास्थ्य एवं कल्याण (Health)","🩺","#D0573E"],
+  "Engineering":["इंजीनियरिंग (Engineering)","⚙️","#4E5D6C"],
+  "Government Services":["सरकारी सेवाएँ","🏛️","#1E4D3A"],
+  "Information Technology":["सूचना प्रौद्योगिकी (IT)","💻","#2F6FB0"],
+  "Management":["प्रबंधन (Management)","📊","#7A4E9C"],
+  "Operations, Logistics, and Hospitality":["होटल, पर्यटन एवं लॉजिस्टिक्स","🏨","#D08A1E"],
+  "Public Policy, Law, and Safety":["क़ानून, नीति एवं सुरक्षा","⚖️","#5B3A29"],
+  "Research and Development":["अनुसंधान एवं विकास (Research)","🔬","#2A8A8A"],
+  "Technical and Skill Trades":["तकनीकी एवं कौशल व्यवसाय (Skills)","🔧","#B0662F"]
+};
+const FIELDS = RAW.fields.map((en,i)=>({i,en,hi:(FIELD_META[en]||[en])[0],icon:(FIELD_META[en]||[,"📌"])[1],color:(FIELD_META[en]||[,,"#2F6B52"])[2]}));
+const CAREERS = RAW.rows.map((r,id)=>({id,f:r[0],title:r[1],study:r[2],exams:r[3],subj:r[4].split(' ').filter(Boolean),ex:r[5].split(' ').filter(Boolean)}));
+const byField = en => FIELDS.find(f=>f.en===en).i;
+
+// ---------- Game state (memory only — nothing is stored or sent) ----------
+const CAMPS=[{m:0,n:"बेस कैंप",i:"⛺"},{m:300,n:"कैंप 1",i:"🏕️"},{m:800,n:"कैंप 2",i:"🏕️"},{m:1500,n:"कैंप 3",i:"🧗"},{m:2500,n:"शिखर",i:"🚩"}];
+const PTS=[[40,150],[105,126],[165,100],[225,64],[285,16]];
+let S;
+function fresh(){S={xp:0,viewed:new Set(),fields:new Set(),saved:[],quiz:false,spins:0,badges:new Set(),camp:0};}
+fresh();
+
+const BADGES=[
+  {id:"first",i:"👣",n:"पहला कदम",d:"पहला करियर देखा",t:()=>S.viewed.size>=1},
+  {id:"quiz",i:"🧭",n:"खुद की पहचान",d:"रुचि क्विज़ पूरा किया",t:()=>S.quiz},
+  {id:"spin",i:"🎡",n:"किस्मत आज़माई",d:"3 बार पहिया घुमाया",t:()=>S.spins>=3},
+  {id:"save",i:"⭐",n:"संग्रहकर्ता",d:"5 करियर सहेजे",t:()=>S.saved.length>=5},
+  {id:"f5",i:"🗺️",n:"खोजी",d:"5 क्षेत्र घूमे",t:()=>S.fields.size>=5},
+  {id:"read",i:"📚",n:"जिज्ञासु",d:"25 करियर पढ़े",t:()=>S.viewed.size>=25},
+  {id:"f13",i:"🌄",n:"सर्वदर्शी",d:"सभी 13 क्षेत्र घूमे",t:()=>S.fields.size>=13},
+  {id:"top",i:"🚩",n:"शिखर विजेता",d:"2500 मीटर तक पहुँचे",t:()=>S.xp>=2500}
+];
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function toast(msg,gold){const t=document.createElement('div');t.className='toast'+(gold?' gold':'');t.textContent=msg;$('#toasts').appendChild(t);setTimeout(()=>t.remove(),1600);}
+const modalQ=[];
+function celebrate(icon,title,text){modalQ.push([icon,title,text]);if(!$('#modal').classList.contains('on'))nextModal();}
+function nextModal(){const m=modalQ.shift();if(!m){$('#modal').classList.remove('on');return;}$('#mIcon').textContent=m[0];$('#mTitle').textContent=m[1];$('#mText').textContent=m[2];$('#modal').classList.add('on');$('#mClose').focus();}
+$('#mClose').onclick=nextModal;
+
+function addXP(n,why,gold){
+  S.xp+=n; toast(`+${n} मीटर ⛰️ ${why}`,gold);
+  let c=0;CAMPS.forEach((k,i)=>{if(S.xp>=k.m)c=i;});
+  if(c>S.camp){S.camp=c;celebrate(CAMPS[c].i,`${CAMPS[c].n} पहुँच गए!`,c===4?"शाबाश! आप करियर शिखर पर हैं। अब अपना पासपोर्ट प्रिंट करें।":`आप ${S.xp} मीटर की ऊँचाई पर हैं। चढ़ाई जारी रखें!`);}
+  checkBadges(); renderMeter();
+}
+function checkBadges(){BADGES.forEach(b=>{if(!S.badges.has(b.id)&&b.t()){S.badges.add(b.id);celebrate(b.i,`नया बैज: ${b.n}`,b.d);}});}
+
+function renderMeter(){
+  const top=CAMPS[4].m, p=Math.min(S.xp/top,1);
+  $('#altTxt').innerHTML=`${S.xp} <span>मीटर</span>`;
+  $('#altBar').style.width=(p*100)+'%';
+  const c=CAMPS[S.camp], nx=CAMPS[S.camp+1];
+  $('#campTxt').textContent=nx?`${c.i} ${c.n} · अगला: ${nx.m}`:`${c.i} ${c.n}`;
+  // climber position along trail
+  let seg=S.camp, a=PTS[seg], b=PTS[Math.min(seg+1,4)];
+  let f=nx?(S.xp-c.m)/(nx.m-c.m):0;
+  const x=a[0]+(b[0]-a[0])*f, y=a[1]+(b[1]-a[1])*f;
+  $('#climber').setAttribute('transform',`translate(${x.toFixed(1)},${y.toFixed(1)})`);
+  $('#camps').innerHTML=PTS.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="${S.xp>=CAMPS[i].m?'#E9A23B':'#fff'}" stroke="#1E4D3A" stroke-width="1.5"/>${i<4?`<text x="${p[0]}" y="${p[1]+15}" text-anchor="middle" font-size="8.5" fill="#fff" font-weight="700">${CAMPS[i].m}</text>`:''}`).join('');
+  const sc=$('#savedCount');sc.hidden=!S.saved.length;sc.textContent=S.saved.length;
+}
+
+// ---------- Career card ----------
+function cardHTML(c){
+  const F=FIELDS[c.f], seen=S.viewed.has(c.id), saved=S.saved.includes(c.id);
+  const steps=c.study.split('→').map(s=>s.trim()).filter(Boolean);
+  const exams=c.exams.split(';').map(s=>s.trim()).filter(Boolean);
+  return `<div class="card" data-id="${c.id}">
+    <button class="head" aria-expanded="false"><span class="fic" style="background:${F.color}1A">${F.icon}</span>
+      <span class="t"><b>${esc(c.title)}</b><small>${esc(F.hi)}</small></span>
+      ${seen?'<span class="seen">✓ देखा</span>':''}<span class="chev" aria-hidden="true">▼</span></button>
+    <div class="body">
+      <h4>📖 क्या पढ़ना होगा? (पढ़ाई का रास्ता)</h4>
+      <ol class="trail">${steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol>
+      <h4>📝 कौन-सी परीक्षाएँ? (Exams / Entrance Tests)</h4>
+      <div class="chips">${exams.map(s=>`<span class="chip${/^no\b/i.test(s)?' none':''}">${esc(s)}</span>`).join('')}</div>
+      <button class="save${saved?' on':''}">${saved?'⭐ पासपोर्ट में सहेजा गया':'☆ मेरे पासपोर्ट में जोड़ें (+40 मी)'}</button>
+    </div></div>`;
+}
+function bindCards(root){
+  root.querySelectorAll('.card').forEach(el=>{
+    const id=+el.dataset.id, c=CAREERS[id];
+    el.querySelector('.head').onclick=()=>{
+      const open=el.classList.toggle('open');
+      el.querySelector('.head').setAttribute('aria-expanded',open);
+      if(open&&!S.viewed.has(id)){
+        S.viewed.add(id);
+        const h=el.querySelector('.head'); if(!h.querySelector('.seen'))h.querySelector('.chev').insertAdjacentHTML('beforebegin','<span class="seen">✓ देखा</span>');
+        if(!S.fields.has(c.f)){S.fields.add(c.f);addXP(70,`नया क्षेत्र खोजा ${FIELDS[c.f].icon}`,true);}else addXP(20,'करियर देखा');
+      }
+    };
+    el.querySelector('.save').onclick=e=>{
+      const b=e.currentTarget, i=S.saved.indexOf(id);
+      if(i>=0){S.saved.splice(i,1);b.classList.remove('on');b.textContent='☆ मेरे पासपोर्ट में जोड़ें';toast('पासपोर्ट से हटाया');renderMeter();}
+      else{S.saved.push(id);b.classList.add('on');b.textContent='⭐ पासपोर्ट में सहेजा गया';
+        if(!c.bonus){c.bonus=1;addXP(40,'पासपोर्ट में जोड़ा');}else{toast('पासपोर्ट में जोड़ा');renderMeter();}}
+    };
+  });
+}
+
+// ---------- Explore ----------
+const PAGE=25; let shown=PAGE, results=[];
+$('#fField').innerHTML='<option value="">सभी 13 क्षेत्र</option>'+FIELDS.map(f=>`<option value="${f.i}">${f.icon} ${f.hi}</option>`).join('');
+function runFilter(){
+  const fv=$('#fField').value, sv=$('#fSubj').value, ev=$('#fExam').value, q=$('#fSearch').value.trim().toLowerCase();
+  results=CAREERS.filter(c=>(fv===''||c.f==+fv)&&(!sv||c.subj.includes(sv))&&(!ev||c.ex.includes(ev))&&(!q||c.title.toLowerCase().includes(q)));
+  shown=PAGE; $('#subjNote').hidden=!sv; drawList();
+}
+function drawList(){
+  $('#resCount').textContent=`${results.length} करियर मिले`;
+  const L=$('#list');
+  if(!results.length){L.innerHTML='<div class="empty"><div style="font-size:36px">🏞️</div><p><b>इन विकल्पों से कोई करियर नहीं मिला।</b></p><p class="lead">कोई एक विकल्प बदलकर "सभी विकल्प" करें और फिर देखें।</p></div>';$('#moreBtn').hidden=true;return;}
+  L.innerHTML=results.slice(0,shown).map(cardHTML).join(''); bindCards(L);
+  $('#moreBtn').hidden=shown>=results.length;
+  $('#moreBtn').textContent=`और करियर दिखाएँ (${results.length-shown} बाकी)`;
+}
+['#fField','#fSubj','#fExam'].forEach(s=>$(s).onchange=runFilter);
+let st;$('#fSearch').oninput=()=>{clearTimeout(st);st=setTimeout(runFilter,200);};
+$('#moreBtn').onclick=()=>{shown+=PAGE;drawList();};
+$('#resetF').onclick=()=>{$('#fField').value='';$('#fSubj').value='';$('#fExam').value='';$('#fSearch').value='';runFilter();};
+
+// ---------- Quiz (interest → field mapping) ----------
+const A="Agriculture and Allied Sciences",R="Arts, Media, Marketing and Entertainment",B="Business and Finance",E="Education and Training",H="Health and Wellness",G="Engineering",V="Government Services",I="Information Technology",M="Management",O="Operations, Logistics, and Hospitality",L="Public Policy, Law, and Safety",D="Research and Development",T="Technical and Skill Trades";
+const QUIZ=[
+  {q:"खाली समय में आपको क्या करना सबसे अच्छा लगता है?",o:[["🛠️","चीज़ें खोलना, जोड़ना या मरम्मत करना",[T,G]],["🎨","ड्रॉइंग, गाना, वीडियो बनाना या लिखना",[R]],["📱","मोबाइल / कंप्यूटर पर नई चीज़ें सीखना",[I,G]],["🤝","दोस्तों की मदद करना, उन्हें कुछ समझाना",[E,H]]]},
+  {q:"स्कूल में कौन-सा विषय सबसे मज़ेदार लगता है?",o:[["📐","गणित और भौतिकी",[G,I]],["🌿","जीव विज्ञान",[H,A,D]],["💰","अर्थशास्त्र, हिसाब-किताब",[B,M]],["📜","इतिहास, राजनीति, भाषाएँ",[V,L,E]]]},
+  {q:"आप किस तरह की जगह पर काम करना चाहेंगे?",o:[["🏞️","खेत, जंगल या प्रकृति के बीच",[A]],["🏢","ऑफ़िस, बैंक या सरकारी दफ़्तर",[B,M,V]],["🏥","अस्पताल या लैब",[H,D]],["🏗️","वर्कशॉप, साइट, होटल या सफ़र में",[T,O]]]},
+  {q:"कौन-सी बात आपको सबसे ज़्यादा ख़ुशी देती है?",o:[["❤️","लोगों की सेवा और सुरक्षा करना",[H,V,L]],["💡","कुछ नया खोजना या आविष्कार करना",[D,I]],["👑","टीम को आगे ले जाना, फ़ैसले लेना",[M,B]],["🎤","लोगों को सिखाना या प्रेरित करना",[E,R]]]},
+  {q:"कोई मुश्किल आए तो आप उसे कैसे हल करते हैं?",o:[["✋","ख़ुद हाथ से करके देखते हैं",[T,G,A]],["🧮","सोच-विचार और आँकड़ों से",[D,I,B]],["🗣️","लोगों से बात करके",[L,M,O]],["✨","कोई नया, अलग तरीका निकालकर",[R]]]},
+  {q:"10 साल बाद आप ख़ुद को कहाँ देखते हैं?",o:[["🎖️","वर्दी में या अफ़सर बनकर देश-समाज की सेवा",[V,L]],["🏪","अपना काम, दुकान या फ़ार्म चलाते हुए",[B,A,T]],["🧑‍💻","किसी बड़ी कंपनी में विशेषज्ञ बनकर",[G,I,M]],["✈️","यात्रियों, पर्यटन या होटल के बीच",[O]]]},
+  {q:"पढ़ाई को लेकर आपकी सोच क्या है?",o:[["⏩","जल्दी काम शुरू करना (ITI / डिप्लोमा)",[T,O,A]],["🎓","लंबी पढ़ाई करके बड़ी डिग्री लेना",[D,H,G]],["📝","प्रतियोगी परीक्षा की तैयारी करना",[V,L]],["🧪","कोर्स के साथ प्रैक्टिकल अनुभव लेना",[R,B,I,E]]]}
+];
+let qi=0, score={};
+function maxFor(en){return QUIZ.reduce((s,q)=>s+(q.o.some(o=>o[2].includes(en))?1:0),0)}
+function drawQuiz(){
+  const box=$('#qbox');
+  if(qi<QUIZ.length){
+    const q=QUIZ[qi];
+    box.innerHTML=`<div class="qprog" aria-label="सवाल ${qi+1} / ${QUIZ.length}">${QUIZ.map((_,i)=>`<i class="${i<qi?'done':i===qi?'now':''}"></i>`).join('')}</div>
+      <p class="note">सवाल ${qi+1} / ${QUIZ.length}</p><h3>${q.q}</h3>
+      <div class="opts">${q.o.map((o,k)=>`<button data-k="${k}"><b>${o[0]}</b>${o[1]}</button>`).join('')}</div>`;
+    box.querySelectorAll('.opts button').forEach(b=>b.onclick=()=>{q.o[+b.dataset.k][2].forEach(f=>score[f]=(score[f]||0)+1);qi++;drawQuiz();box.scrollIntoView({block:'nearest'});});
+    return;
+  }
+  const ranked=FIELDS.map(f=>({f,p:Math.round(100*(score[f.en]||0)/Math.max(1,maxFor(f.en)))})).filter(x=>x.p>0).sort((a,b)=>b.p-a.p||(score[b.f.en]||0)-(score[a.f.en]||0)).slice(0,3);
+  box.innerHTML=`<h3>🎉 आपके लिए सबसे मेल खाते क्षेत्र</h3>
+    <p class="lead">ये सिर्फ़ शुरुआत के सुझाव हैं। बाकी क्षेत्र भी ज़रूर देखें!</p>
+    <div class="result">${ranked.map((r,k)=>`<div class="res${k===0?' top':''}"><div class="rh"><span style="font-size:28px">${r.f.icon}</span><b>${r.f.hi}</b><span class="pct">${r.p}%</span></div>
+      <div class="mbar"><i style="width:${r.p}%"></i></div>
+      <button class="btn${k?' ghost':''}" data-f="${r.f.i}">इसके ${CAREERS.filter(c=>c.f===r.f.i).length} करियर देखें</button></div>`).join('')}</div>
+    <p style="margin-top:14px"><button class="linkbtn" id="qAgain">क्विज़ दोबारा खेलें</button></p>`;
+  box.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{$('#resetF').click();$('#fField').value=b.dataset.f;runFilter();go('explore');});
+  $('#qAgain').onclick=()=>{qi=0;score={};drawQuiz();};
+  if(!S.quiz){S.quiz=true;addXP(150,'क्विज़ पूरा किया');}
+}
+
+// ---------- Wheel ----------
+(function drawWheel(){
+  const n=FIELDS.length, a=2*Math.PI/n, r=100; let g='';
+  FIELDS.forEach((f,i)=>{
+    const a0=i*a-Math.PI/2-a/2, a1=a0+a;
+    const x0=r*Math.cos(a0),y0=r*Math.sin(a0),x1=r*Math.cos(a1),y1=r*Math.sin(a1);
+    const mid=a0+a/2, tx=70*Math.cos(mid), ty=70*Math.sin(mid);
+    g+=`<path d="M0,0 L${x0.toFixed(2)},${y0.toFixed(2)} A${r},${r} 0 0,1 ${x1.toFixed(2)},${y1.toFixed(2)}Z" fill="${f.color}" stroke="#fff" stroke-width="1.5"/>
+        <text x="${tx.toFixed(1)}" y="${(ty+6).toFixed(1)}" text-anchor="middle" font-size="17">${f.icon}</text>`;
+  });
+  $('#wheelG').innerHTML=g+`<circle r="${r}" fill="none" stroke="#1E4D3A" stroke-width="4"/>`;
+})();
+let rot=0, spinning=false;
+$('#spinBtn').onclick=()=>{
+  if(spinning)return; spinning=true; $('#spinBtn').disabled=true; $('#spinOut').innerHTML='';
+  const n=FIELDS.length, k=Math.floor(Math.random()*n), seg=360/n;
+  const target=360-k*seg; // segment k centred at top
+  const cur=((rot%360)+360)%360;
+  rot+= 360*5 + ((target-cur+360)%360) + (Math.random()-.5)*seg*.6;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('#wheel').style.transform=`rotate(${rot}deg)`;
+  setTimeout(()=>{
+    spinning=false; $('#spinBtn').disabled=false; $('#spinBtn').textContent='फिर से घुमाएँ!';
+    const pool=CAREERS.filter(c=>c.f===k), c=pool[Math.floor(Math.random()*pool.length)];
+    $('#spinOut').innerHTML=`<p style="text-align:center"><b>${FIELDS[k].icon} ${FIELDS[k].hi}</b> पर रुका! आपका करियर:</p><div class="list">${cardHTML(c)}</div>`;
+    bindCards($('#spinOut')); $('#spinOut .card .head').click();
+    S.spins++; if(S.spins<=5)addXP(30,'पहिया घुमाया'); else checkBadges();
+  }, reduce?50:4100);
+};
+
+// ---------- Passport ----------
+function drawPass(){
+  $('#sAlt').textContent=S.xp; $('#sSeen').textContent=S.viewed.size; $('#sFields').textContent=`${S.fields.size}/13`;
+  $('#badges').innerHTML=BADGES.map(b=>`<div class="bdg${S.badges.has(b.id)?' got':''}"><b>${b.i}</b>${b.n}<span>${b.d}</span></div>`).join('');
+  $('#savedList').innerHTML=S.saved.length?S.saved.map(id=>{const c=CAREERS[id],F=FIELDS[c.f];return `<div class="saved-item"><button class="x" data-rm="${id}">हटाएँ</button><b>${F.icon} ${esc(c.title)}</b><p class="note">${esc(F.hi)}</p><p>📖 ${esc(c.study)}</p><p>📝 ${esc(c.exams)}</p></div>`}).join('')
+    :'<div class="empty no-print"><p><b>अभी कोई करियर नहीं सहेजा।</b></p><p class="lead">करियर खोलकर ☆ बटन दबाएँ, वह यहाँ आ जाएगा।</p><button class="btn" data-go="explore">करियर खोजें</button></div>';
+  $('#savedList').querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{S.saved.splice(S.saved.indexOf(+b.dataset.rm),1);renderMeter();drawPass();});
+  $('#savedList').querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+}
+$('#printBtn').onclick=()=>window.print();
+$('#resetAll').onclick=()=>{
+  if(!confirm('क्या आप सब कुछ मिटाकर नए विद्यार्थी के लिए शुरू करना चाहते हैं?'))return;
+  fresh(); CAREERS.forEach(c=>delete c.bonus); qi=0; score={}; $('#pName').value=''; rot=0; $('#wheel').style.transform='';
+  $('#spinOut').innerHTML=''; $('#spinBtn').textContent='पहिया घुमाएँ!'; $('#resetF').click(); drawQuiz(); renderMeter(); go('home'); toast('नई चढ़ाई शुरू! 🏔️');
+};
+
+// ---------- Navigation ----------
+function go(v){
+  document.querySelectorAll('section.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.go===v));
+  if(v==='pass')drawPass(); if(v==='explore')drawList();
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+
+runFilter(); drawQuiz(); renderMeter();
+</script>
+</body>
+</html>
